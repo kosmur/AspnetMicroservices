@@ -1,41 +1,21 @@
 {
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
     "version": "2.0.0",
     "tasks": [
         {
             "label": "build",
-            "command": "dotnet",
-            "type": "process",
+            "type": "shell",
+            "command": "msbuild",
             "args": [
-                "build",
-                "${workspaceFolder}/Basket.API.csproj",
                 "/property:GenerateFullPaths=true",
+                "/t:build",
                 "/consoleloggerparameters:NoSummary"
             ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "publish",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "publish",
-                "${workspaceFolder}/Basket.API.csproj",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "watch",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "watch",
-                "run",
-                "${workspaceFolder}/Basket.API.csproj",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
-            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
             "problemMatcher": "$msCompile"
         },
         {
@@ -45,14 +25,14 @@
                 "build"
             ],
             "dockerBuild": {
-                "tag": "basketapi:dev",
+                "tag": "src:dev",
                 "target": "base",
-                "dockerfile": "${workspaceFolder}/Dockerfile",
+                "dockerfile": "${workspaceFolder}/Services/Catalog/Catalog.API/Dockerfile",
                 "context": "${workspaceFolder}",
                 "pull": true
             },
             "netCore": {
-                "appProject": "${workspaceFolder}/Basket.API.csproj"
+                "appProject": "${workspaceFolder}/Services/Catalog/Catalog.API/Catalog.API.csproj"
             }
         },
         {
@@ -62,13 +42,13 @@
                 "build"
             ],
             "dockerBuild": {
-                "tag": "basketapi:latest",
-                "dockerfile": "${workspaceFolder}/Dockerfile",
+                "tag": "src:latest",
+                "dockerfile": "${workspaceFolder}/Services/Catalog/Catalog.API/Dockerfile",
                 "context": "${workspaceFolder}",
                 "pull": true
             },
             "netCore": {
-                "appProject": "${workspaceFolder}/Basket.API.csproj"
+                "appProject": "${workspaceFolder}/Services/Catalog/Catalog.API/Catalog.API.csproj"
             }
         },
         {
@@ -79,8 +59,9 @@
             ],
             "dockerRun": {},
             "netCore": {
-                "appProject": "${workspaceFolder}/Basket.API.csproj",
-                "enableDebugging": true
+                "appProject": "${workspaceFolder}/Services/Catalog/Catalog.API/Catalog.API.csproj",
+                "enableDebugging": true,
+                "configureSsl": false
             }
         },
         {
@@ -91,7 +72,7 @@
             ],
             "dockerRun": {},
             "netCore": {
-                "appProject": "${workspaceFolder}/Basket.API.csproj"
+                "appProject": "${workspaceFolder}/Services/Catalog/Catalog.API/Catalog.API.csproj"
             }
         }
     ]
