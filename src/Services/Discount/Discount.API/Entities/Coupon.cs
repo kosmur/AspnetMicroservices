@@ -10,6 +10,6 @@ namespace Discount.API.Entities
 
         public string Description { get; set; }
 
-        public int Amount { get; set; }
+        public int Amount { get; set;}
     }
 }

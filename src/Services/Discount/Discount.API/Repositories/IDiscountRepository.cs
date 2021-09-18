@@ -3,7 +3,7 @@ using Discount.API.Entities;
 
 namespace Discount.API.Repositories
 {
-    interface ICouponRepository
+    public interface IDiscountRepository
     {
         Task<Coupon> GetCoupon(string productName);
 
