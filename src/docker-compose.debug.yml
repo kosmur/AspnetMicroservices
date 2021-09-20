@@ -38,6 +38,7 @@ services:
       - "5050:80"
     volumes: 
       - pgadmin_data:/root/.pgadmin
+      #- pgadmin_data:/var/lib/pgadmin - internet version.
         
   portainer:
     container_name: portainer 
@@ -75,7 +76,7 @@ services:
     container_name: discount.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "DatabaseSettings:ConnectionString:Server=discountdb;Port=5432;Database=DiscountDb;UserId=admin;Password=admin1234;"
+      - "DatabaseSettings:ConnectionString=Server=discountdb;Port=5432;Database=DiscountDb;UserId=admin;Password=admin1234;"
     depends_on:
       - discountdb 
     ports:

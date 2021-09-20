@@ -4,7 +4,7 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-focal AS build
 WORKDIR /src
-COPY ["Services/Discount/Discount.API/Discount.API.csproj", "Services/Discount/Discount.API"]
+COPY ["Services/Discount/Discount.API/Discount.API.csproj", "Services/Discount/Discount.API/"]
 RUN dotnet restore "Services/Discount/Discount.API/Discount.API.csproj"
 COPY . .
 WORKDIR "/src/Services/Discount/Discount.API"

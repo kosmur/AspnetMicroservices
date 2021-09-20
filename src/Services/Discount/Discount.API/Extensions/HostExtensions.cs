@@ -35,7 +35,7 @@ namespace   Discount.API.Extensions
                     command.CommandText = "drop table if exists Coupon";
                     command.ExecuteNonQuery();
 
-                    command.CommandText = @"craete table Coupon 
+                    command.CommandText = @"create table Coupon 
                                                 (Id serial primary key,
                                                  ProductName varchar(24) not null,
                                                  Description text,
