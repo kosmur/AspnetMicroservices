@@ -24,7 +24,7 @@ namespace Discount.Grpc.Repositories
            var affected = await connection.ExecuteAsync
             ("insert into Coupon(ProductName, Description, Amount) values (@ProductName, @Description, @Amount)",
             new { ProductName = coupon.ProductName, Description = coupon.Description, Amount = coupon.Amount });
-
+            
             return affected > 0;
         }
 
